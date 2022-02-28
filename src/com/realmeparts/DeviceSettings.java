@@ -52,7 +52,6 @@ public class DeviceSettings extends PreferenceFragment
     public static final String KEY_CHARGING_SWITCH = "smart_charging";
     public static final String KEY_CHARGING_SPEED = "charging_speed";
     public static final String KEY_RESET_STATS = "reset_stats";
-    public static final String KEY_DT2W_SWITCH = "dt2w";
     public static final String KEY_CABC = "cabc";
     public static final String CABC_SYSTEM_PROPERTY = "persist.cabc_profile";
     public static final String KEY_FPS_INFO = "fps_info";
@@ -65,7 +64,6 @@ public class DeviceSettings extends PreferenceFragment
     public static SecureSettingListPreference mChargingSpeed;
     public static TwoStatePreference mResetStats;
     public static TwoStatePreference mRefreshRate90Forced;
-    private static TwoStatePreference mDT2WModeSwitch;
     public static SeekBarPreference mSeekBarPreference;
     public static DisplayManager mDisplayManager;
     private static NotificationManager mNotificationManager;
@@ -146,12 +144,6 @@ public class DeviceSettings extends PreferenceFragment
         mPerfProfile.setSummary(mPerfProfile.getEntry());
         mPerfProfile.setOnPreferenceChangeListener(this);
 
-        mDT2WModeSwitch = (TwoStatePreference) findPreference(KEY_DT2W_SWITCH);
-        mDT2WModeSwitch.setEnabled(DT2WModeSwitch.isSupported());
-        mDT2WModeSwitch.setChecked(DT2WModeSwitch.isCurrentlyEnabled(this.getContext()));
-        mDT2WModeSwitch.setOnPreferenceChangeListener(new DT2WModeSwitch());
-
-       
 
         isCoolDownAvailable();
         DisplayRefreshRateModes();
