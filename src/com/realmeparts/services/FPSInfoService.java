@@ -98,7 +98,7 @@ public class FPSInfoService extends Service {
                         WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE |
                         WindowManager.LayoutParams.FLAG_HARDWARE_ACCELERATED,
                 PixelFormat.TRANSLUCENT);
-        params.gravity = Gravity.RIGHT | Gravity.TOP;
+        params.gravity = Gravity.LEFT | Gravity.TOP;
         params.setTitle("FPS Info");
 
         startThread();
@@ -239,16 +239,16 @@ public class FPSInfoService extends Service {
             }
 
             final int W = mNeededWidth;
-            final int RIGHT = getWidth() - 1;
+            final int LEFT = getWidth() - 1;
 
-            int x = RIGHT - mPaddingLeft;
+            int x = LEFT - mPaddingLeft;
             int top = mPaddingTop + 2;
             int bottom = mPaddingTop + mFH - 2;
 
             int y = mPaddingTop - (int) mAscent;
 
             String s = getFPSInfoString();
-            canvas.drawText(s, RIGHT - mPaddingLeft - mMaxWidth,
+            canvas.drawText(s, LEFT - mPaddingLeft - mMaxWidth,
                     y - 1, mOnlinePaint);
             y += mFH;
         }
